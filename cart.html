@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart | VELORA</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="cart.css">
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">VELO<span>R</span>A</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="shop.html?category=Men">Men</a>
+        <a href="shop.html?category=Women">Women</a>
+        <a href="shop.html?category=Kids">Kids</a>
+        <a href="shop.html?sale=true">Sale</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-icons">
+        <button><i data-lucide="search"></i></button>
+        <button><i data-lucide="heart"></i></button>
+        <a href="login.html" class="auth-link"><i data-lucide="user"></i></a>
+        <button id="cart-btn">
+          <i data-lucide="shopping-bag"></i>
+          <span class="cart-badge">0</span>
+        </button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn"><i data-lucide="menu"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <div class="logo">VELO<span>R</span>A</div>
+      <button id="mobile-menu-close"><i data-lucide="x"></i></button>
+    </div>
+    <nav class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="shop.html?category=Men">Men</a>
+      <a href="shop.html?category=Women">Women</a>
+      <a href="shop.html?category=Kids">Kids</a>
+      <a href="shop.html?sale=true">Sale</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="cart-close" class="cart-close"><i data-lucide="x"></i></button>
+    </div>
+    <div id="cart-drawer-items" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal</span>
+        <span id="cart-drawer-total">৳ 0</span>
+      </div>
+      <a href="cart.html" class="btn btn-primary btn-checkout">View Cart & Checkout</a>
+    </div>
+  </div>
+
+  <!-- Page Banner -->
+  <div class="page-banner">
+    <div class="container">
+      <h1 class="page-title">Shopping Cart</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> / <span>Cart</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Page Content -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="cart-page-layout">
+        <!-- Cart Items -->
+        <div>
+          <table class="cart-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="cart-page-items">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+          <div id="empty-cart-msg" class="text-center mt-5" style="display: none;">
+            <i data-lucide="shopping-bag" style="width: 64px; height: 64px; color: #E2E8F0; margin-bottom: 20px;"></i>
+            <h3>Your cart is empty</h3>
+            <p class="text-muted mt-2 mb-4">Looks like you haven't added anything to your cart yet.</p>
+            <a href="shop.html" class="btn btn-primary">CONTINUE SHOPPING</a>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="cart-summary">
+          <h3>Order Summary</h3>
+          <div class="summary-row">
+            <span>Subtotal</span>
+            <span id="cart-subtotal">৳ 0</span>
+          </div>
+          <div class="summary-row">
+            <span>Shipping</span>
+            <span id="cart-shipping">Calculated at checkout</span>
+          </div>
+          <div class="summary-total">
+            <span>Total</span>
+            <span id="cart-grand-total">৳ 0</span>
+          </div>
+          <a href="checkout.html" class="btn btn-accent btn-checkout-large" id="checkout-btn">PROCEED TO CHECKOUT</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 VELORA. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast-container" class="toast-container"></div>
+  <button id="scroll-top" class="scroll-top"><i data-lucide="arrow-up"></i></button>
+
+  <script src="main.js"></script>
+  <script src="cart.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {       if (typeof lucide !== 'undefined') {         lucide.createIcons();       }     });
+    
+    function renderCartPage() {
+      const container = document.getElementById('cart-page-items');
+      const emptyMsg = document.getElementById('empty-cart-msg');
+      const checkoutBtn = document.getElementById('checkout-btn');
+      
+      if (cart.length === 0) {
+        container.innerHTML = '';
+        emptyMsg.style.display = 'block';
+        checkoutBtn.style.pointerEvents = 'none';
+        checkoutBtn.style.opacity = '0.5';
+        document.getElementById('cart-subtotal').textContent = `${CURRENCY} 0`;
+        document.getElementById('cart-grand-total').textContent = `${CURRENCY} 0`;
+        return;
+      }
+      
+      emptyMsg.style.display = 'none';
+      checkoutBtn.style.pointerEvents = 'auto';
+      checkoutBtn.style.opacity = '1';
+      
+      container.innerHTML = cart.map(item => `
+        <tr>
+          <td data-label="Product">
+            <div class="cart-product-cell">
+              <img src="${item.image}" alt="${item.name}" class="cart-product-img">
+              <div class="cart-product-info">
+                <h4>${item.name}</h4>
+                <div class="cart-product-meta">Size: ${item.size} | Color: <span style="display:inline-block;width:10px;height:10px;background:${item.color};border-radius:50%;"></span></div>
+              </div>
+            </div>
+          </td>
+          <td data-label="Price">${CURRENCY} ${item.price}</td>
+          <td data-label="Quantity">
+            <div class="qty-controls" style="margin-top: 0;">
+              <button class="qty-btn" onclick="updateQty(${item.id}, -1)">-</button>
+              <span>${item.quantity}</span>
+              <button class="qty-btn" onclick="updateQty(${item.id}, 1)">+</button>
+            </div>
+          </td>
+          <td data-label="Total">${CURRENCY} ${item.price * item.quantity}</td>
+          <td data-label="">
+            <button class="btn" style="color: var(--color-accent);" onclick="removeFromCart(${item.id})"><i data-lucide="trash-2"></i></button>
+          </td>
+        </tr>
+      `).join('');
+      
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+      
+      const subtotal = getCartTotal();
+      document.getElementById('cart-subtotal').textContent = `${CURRENCY} ${subtotal}`;
+      document.getElementById('cart-grand-total').textContent = `${CURRENCY} ${subtotal}`;
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCartPage();
+    });
+  </script>
+</body>
+</html>

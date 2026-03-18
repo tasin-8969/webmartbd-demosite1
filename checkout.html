@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout | VELORA</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="checkout.css">
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">VELO<span>R</span>A</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="shop.html?category=Men">Men</a>
+        <a href="shop.html?category=Women">Women</a>
+        <a href="shop.html?category=Kids">Kids</a>
+        <a href="shop.html?sale=true">Sale</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-icons">
+        <button><i data-lucide="search"></i></button>
+        <button><i data-lucide="heart"></i></button>
+        <a href="login.html" class="auth-link"><i data-lucide="user"></i></a>
+        <button id="cart-btn">
+          <i data-lucide="shopping-bag"></i>
+          <span class="cart-badge">0</span>
+        </button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn"><i data-lucide="menu"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <div class="logo">VELO<span>R</span>A</div>
+      <button id="mobile-menu-close"><i data-lucide="x"></i></button>
+    </div>
+    <nav class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="shop.html?category=Men">Men</a>
+      <a href="shop.html?category=Women">Women</a>
+      <a href="shop.html?category=Kids">Kids</a>
+      <a href="shop.html?sale=true">Sale</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="cart-close" class="cart-close"><i data-lucide="x"></i></button>
+    </div>
+    <div id="cart-drawer-items" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal</span>
+        <span id="cart-drawer-total">৳ 0</span>
+      </div>
+      <a href="cart.html" class="btn btn-primary btn-checkout">View Cart & Checkout</a>
+    </div>
+  </div>
+
+  <!-- Page Banner -->
+  <div class="page-banner">
+    <div class="container">
+      <h1 class="page-title">Checkout</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> / <a href="cart.html">Cart</a> / <span>Checkout</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkout Content -->
+  <section class="section-padding">
+    <div class="container">
+      <form id="checkout-form" class="checkout-layout">
+        <!-- Left Column: Form -->
+        <div>
+          <div class="checkout-section">
+            <h2 class="checkout-title">Customer Information</h2>
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label class="form-label">Full Name</label>
+                <input type="text" id="checkout-name" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Email Address</label>
+                <input type="email" id="checkout-email" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Phone Number</label>
+                <input type="tel" id="checkout-phone" class="form-control" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-section">
+            <h2 class="checkout-title">Delivery Address</h2>
+            <div class="form-grid">
+              <div class="form-group full-width">
+                <label class="form-label">Street Address</label>
+                <input type="text" id="checkout-address" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">City</label>
+                <select id="checkout-city" class="form-control" required>
+                  <option value="">Select City</option>
+                  <option value="Dhaka">Dhaka</option>
+                  <option value="Chattogram">Chattogram</option>
+                  <option value="Sylhet">Sylhet</option>
+                  <option value="Rajshahi">Rajshahi</option>
+                  <option value="Khulna">Khulna</option>
+                  <option value="Barishal">Barishal</option>
+                  <option value="Rangpur">Rangpur</option>
+                  <option value="Mymensingh">Mymensingh</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Area/Thana</label>
+                <input type="text" id="checkout-area" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Postal Code</label>
+                <input type="text" id="checkout-zip" class="form-control" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="checkout-section">
+            <h2 class="checkout-title">Payment Method</h2>
+            <div class="payment-methods">
+              
+              <!-- bKash -->
+              <label class="payment-method bkash" id="method-bkash">
+                <input type="radio" name="payment" value="bkash" style="display: none;">
+                <div class="payment-method-header">
+                  <div class="payment-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor"/>
+                      <path d="M2 17L12 22L22 17" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M2 12L12 17L22 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </div>
+                  <span>Pay with bKash</span>
+                </div>
+                <div class="payment-details">
+                  <div class="bkash-instruction">
+                    Send payment to our bKash merchant number: <strong>01711223344</strong> — Then enter your transaction ID below.
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">Your bKash Number</label>
+                    <input type="text" id="bkash-number" class="form-control" placeholder="01XXXXXXXXX">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label">bKash Transaction ID</label>
+                    <input type="text" id="bkash-trxid" class="form-control" placeholder="10 alphanumeric characters">
+                  </div>
+                  <div class="bkash-powered">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white"/>
+                      <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Powered by bKash
+                  </div>
+                </div>
+              </label>
+
+              <!-- COD -->
+              <label class="payment-method active" id="method-cod">
+                <input type="radio" name="payment" value="cod" checked style="display: none;">
+                <div class="payment-method-header">
+                  <div class="payment-icon"><i data-lucide="truck"></i></div>
+                  <span>Cash on Delivery</span>
+                </div>
+                <div class="payment-details">
+                  <p class="text-muted">Pay when your order arrives at your door.</p>
+                </div>
+              </label>
+
+              <!-- Card (Disabled) -->
+              <label class="payment-method disabled" id="method-card">
+                <div class="coming-soon-badge">Coming Soon</div>
+                <input type="radio" name="payment" value="card" disabled style="display: none;">
+                <div class="payment-method-header">
+                  <div class="payment-icon"><i data-lucide="credit-card"></i></div>
+                  <span>Credit/Debit Card</span>
+                </div>
+              </label>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column: Summary -->
+        <div>
+          <div class="checkout-summary">
+            <h2 class="checkout-title">Order Summary</h2>
+            <div id="checkout-items">
+              <!-- Rendered via JS -->
+            </div>
+            
+            <div class="summary-totals">
+              <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="checkout-subtotal">৳ 0</span>
+              </div>
+              <div class="summary-row">
+                <span>Shipping</span>
+                <span id="checkout-shipping">৳ 0</span>
+              </div>
+              <div class="summary-total">
+                <span>Total</span>
+                <span id="checkout-grand-total">৳ 0</span>
+              </div>
+            </div>
+            
+            <button type="submit" class="btn btn-accent btn-place-order" id="place-order-btn">PLACE ORDER</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- Success Modal -->
+  <div id="success-modal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+          <polyline points="22 4 12 14.01 9 11.01"></polyline>
+        </svg>
+      </div>
+      <h2>Order Placed Successfully!</h2>
+      <p class="text-muted mt-2">Thank you for shopping with VELORA.</p>
+      
+      <div class="order-number" id="success-order-number">VLR-2026-XXXX</div>
+      
+      <p class="text-muted mb-4">You will receive an email confirmation shortly. Estimated delivery is 3-5 business days.</p>
+      
+      <a href="index.html" class="btn btn-primary" style="width: 100%;">CONTINUE SHOPPING</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 VELORA. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast-container" class="toast-container"></div>
+  <button id="scroll-top" class="scroll-top"><i data-lucide="arrow-up"></i></button>
+
+  <script src="main.js"></script>
+  <script src="cart.js"></script>
+  <script src="auth.js"></script>
+  <script src="bkash.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {       if (typeof lucide !== 'undefined') {         lucide.createIcons();       }     });
+    
+    let currentShipping = 0;
+    let grandTotal = 0;
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      // Redirect if cart empty
+      if (cart.length === 0) {
+        window.location.href = 'cart.html';
+        return;
+      }
+      
+      // Render items
+      const itemsContainer = document.getElementById('checkout-items');
+      itemsContainer.innerHTML = cart.map(item => `
+        <div class="summary-item">
+          <div class="summary-item-img">
+            <img src="${item.image}" alt="${item.name}" style="width:100%; height:100%; object-fit:cover; border-radius:8px;">
+            <div class="summary-item-qty">${item.quantity}</div>
+          </div>
+          <div class="summary-item-details">
+            <div class="summary-item-title">${item.name}</div>
+            <div class="summary-item-meta">Size: ${item.size} | Color: <span style="display:inline-block;width:10px;height:10px;background:${item.color};border-radius:50%;"></span></div>
+            <div class="summary-item-price">${CURRENCY} ${item.price * item.quantity}</div>
+          </div>
+        </div>
+      `).join('');
+      
+      // Pre-fill user data if logged in
+      if (isLoggedIn()) {
+        document.getElementById('checkout-name').value = currentUser.name;
+        document.getElementById('checkout-email').value = currentUser.email;
+        document.getElementById('checkout-phone').value = currentUser.phone;
+      }
+      
+      // Calculate totals
+      updateTotals();
+      
+      // City change listener for shipping
+      document.getElementById('checkout-city').addEventListener('change', (e) => {
+        updateTotals();
+      });
+      
+      // Payment method selection
+      const paymentMethods = document.querySelectorAll('.payment-method:not(.disabled)');
+      paymentMethods.forEach(method => {
+        method.addEventListener('click', () => {
+          paymentMethods.forEach(m => m.classList.remove('active'));
+          method.classList.add('active');
+          method.querySelector('input[type="radio"]').checked = true;
+        });
+      });
+      
+      // Form submission
+      document.getElementById('checkout-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const selectedPayment = document.querySelector('input[name="payment"]:checked').value;
+        
+        if (selectedPayment === 'bkash') {
+          const number = document.getElementById('bkash-number').value;
+          const trxID = document.getElementById('bkash-trxid').value;
+          
+          const result = bKash.processPayment(number, trxID, grandTotal);
+          
+          if (!result.success) {
+            showToast(result.error);
+            return;
+          }
+        }
+        
+        // Success
+        const orderNumber = `VLR-2026-${Math.floor(1000 + Math.random() * 9000)}`;
+        document.getElementById('success-order-number').textContent = orderNumber;
+        
+        // Clear cart
+        cart = [];
+        saveCart();
+        updateCartCount();
+        
+        // Show modal
+        document.getElementById('success-modal').classList.add('active');
+      });
+    });
+    
+    function updateTotals() {
+      const subtotal = getCartTotal();
+      const city = document.getElementById('checkout-city').value;
+      
+      if (subtotal >= FREE_DELIVERY_THRESHOLD) {
+        currentShipping = 0;
+      } else if (city === 'Dhaka') {
+        currentShipping = DELIVERY_INSIDE_DHAKA;
+      } else if (city) {
+        currentShipping = DELIVERY_OUTSIDE_DHAKA;
+      } else {
+        currentShipping = 0; // Not selected yet
+      }
+      
+      grandTotal = subtotal + currentShipping;
+      
+      document.getElementById('checkout-subtotal').textContent = `${CURRENCY} ${subtotal}`;
+      document.getElementById('checkout-shipping').textContent = currentShipping === 0 ? (subtotal >= FREE_DELIVERY_THRESHOLD ? 'Free' : `${CURRENCY} 0`) : `${CURRENCY} ${currentShipping}`;
+      document.getElementById('checkout-grand-total').textContent = `${CURRENCY} ${grandTotal}`;
+      
+      document.getElementById('place-order-btn').textContent = `PLACE ORDER ${CURRENCY} ${grandTotal}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account | VELORA</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="account.css">
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">VELO<span>R</span>A</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="shop.html?category=Men">Men</a>
+        <a href="shop.html?category=Women">Women</a>
+        <a href="shop.html?category=Kids">Kids</a>
+        <a href="shop.html?sale=true">Sale</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-icons">
+        <button><i data-lucide="search"></i></button>
+        <button><i data-lucide="heart"></i></button>
+        <a href="login.html" class="auth-link text-accent"><i data-lucide="user"></i></a>
+        <button id="cart-btn">
+          <i data-lucide="shopping-bag"></i>
+          <span class="cart-badge">0</span>
+        </button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn"><i data-lucide="menu"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <div class="logo">VELO<span>R</span>A</div>
+      <button id="mobile-menu-close"><i data-lucide="x"></i></button>
+    </div>
+    <nav class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="shop.html?category=Men">Men</a>
+      <a href="shop.html?category=Women">Women</a>
+      <a href="shop.html?category=Kids">Kids</a>
+      <a href="shop.html?sale=true">Sale</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="cart-close" class="cart-close"><i data-lucide="x"></i></button>
+    </div>
+    <div id="cart-drawer-items" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal</span>
+        <span id="cart-drawer-total">৳ 0</span>
+      </div>
+      <a href="cart.html" class="btn btn-primary btn-checkout">View Cart & Checkout</a>
+    </div>
+  </div>
+
+  <!-- Page Banner -->
+  <div class="page-banner">
+    <div class="container">
+      <h1 class="page-title">My Account</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> / <span>Account</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Account Content -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="account-layout">
+        <!-- Sidebar -->
+        <aside class="account-sidebar">
+          <nav class="account-nav">
+            <a href="#" class="active"><i data-lucide="layout-dashboard"></i> Dashboard</a>
+            <a href="#"><i data-lucide="shopping-bag"></i> Orders</a>
+            <a href="#"><i data-lucide="user"></i> Edit Profile</a>
+            <a href="#"><i data-lucide="key"></i> Change Password</a>
+            <a href="#" onclick="logout(); return false;"><i data-lucide="log-out"></i> Logout</a>
+          </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="account-content">
+          <div class="account-header">
+            <h2 id="welcome-msg">Welcome, User</h2>
+            <p class="text-muted">From your account dashboard you can view your recent orders, manage your shipping and billing addresses, and edit your password and account details.</p>
+          </div>
+
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-value">2</div>
+              <div class="stat-label">Total Orders</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">1</div>
+              <div class="stat-label">Pending</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value">৳ 4,500</div>
+              <div class="stat-label">Total Spent</div>
+            </div>
+          </div>
+
+          <h3 class="mb-3">Recent Orders</h3>
+          <table class="orders-table">
+            <thead>
+              <tr>
+                <th>Order</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Total</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>#VLR-2026-8492</td>
+                <td>March 15, 2026</td>
+                <td><span class="status-badge status-processing">Processing</span></td>
+                <td>৳ 2,400 for 2 items</td>
+                <td><button class="btn btn-outline-dark" style="padding: 6px 12px; font-size: 13px;">View</button></td>
+              </tr>
+              <tr>
+                <td>#VLR-2026-3105</td>
+                <td>February 28, 2026</td>
+                <td><span class="status-badge status-completed">Completed</span></td>
+                <td>৳ 2,100 for 1 item</td>
+                <td><button class="btn btn-outline-dark" style="padding: 6px 12px; font-size: 13px;">View</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </main>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 VELORA. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast-container" class="toast-container"></div>
+  <button id="scroll-top" class="scroll-top"><i data-lucide="arrow-up"></i></button>
+
+  <script src="main.js"></script>
+  <script src="cart.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {       if (typeof lucide !== 'undefined') {         lucide.createIcons();       }     });
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!isLoggedIn()) {
+        window.location.href = 'login.html';
+        return;
+      }
+      
+      document.getElementById('welcome-msg').textContent = `Welcome, ${currentUser.name}`;
+    });
+  </script>
+</body>
+</html>

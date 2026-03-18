@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | VELORA</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+  <style>
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+    .contact-info {
+      background: var(--color-card-bg);
+      padding: 40px;
+      border-radius: var(--radius-card);
+    }
+    .info-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .info-icon {
+      width: 48px;
+      height: 48px;
+      background: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-primary);
+      flex-shrink: 0;
+    }
+    .info-content h3 {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+    .info-content p {
+      color: var(--color-text-muted);
+    }
+    .contact-form .form-group {
+      margin-bottom: 20px;
+    }
+    .contact-form .form-label {
+      display: block;
+      font-weight: 500;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+    .contact-form .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      transition: var(--transition);
+    }
+    .contact-form .form-control:focus {
+      outline: none;
+      border-color: var(--color-primary);
+    }
+    .contact-form textarea.form-control {
+      resize: vertical;
+      min-height: 150px;
+    }
+    @media (max-width: 767px) {
+      .contact-layout { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">VELO<span>R</span>A</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="shop.html?category=Men">Men</a>
+        <a href="shop.html?category=Women">Women</a>
+        <a href="shop.html?category=Kids">Kids</a>
+        <a href="shop.html?sale=true">Sale</a>
+        <a href="about.html">About</a>
+        <a href="contact.html" class="text-accent">Contact</a>
+      </nav>
+      <div class="header-icons">
+        <button><i data-lucide="search"></i></button>
+        <button><i data-lucide="heart"></i></button>
+        <a href="login.html" class="auth-link"><i data-lucide="user"></i></a>
+        <button id="cart-btn">
+          <i data-lucide="shopping-bag"></i>
+          <span class="cart-badge">0</span>
+        </button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn"><i data-lucide="menu"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <div class="logo">VELO<span>R</span>A</div>
+      <button id="mobile-menu-close"><i data-lucide="x"></i></button>
+    </div>
+    <nav class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="shop.html?category=Men">Men</a>
+      <a href="shop.html?category=Women">Women</a>
+      <a href="shop.html?category=Kids">Kids</a>
+      <a href="shop.html?sale=true">Sale</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="cart-close" class="cart-close"><i data-lucide="x"></i></button>
+    </div>
+    <div id="cart-drawer-items" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal</span>
+        <span id="cart-drawer-total">৳ 0</span>
+      </div>
+      <a href="cart.html" class="btn btn-primary btn-checkout">View Cart & Checkout</a>
+    </div>
+  </div>
+
+  <!-- Page Banner -->
+  <div class="page-banner">
+    <div class="container">
+      <h1 class="page-title">Contact Us</h1>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> / <span>Contact</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Content -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="contact-layout">
+        <!-- Contact Info -->
+        <div class="contact-info">
+          <h2 class="mb-4">Get In Touch</h2>
+          <p class="text-muted mb-5">Have a question about an order, our products, or just want to say hello? We'd love to hear from you.</p>
+          
+          <div class="info-item">
+            <div class="info-icon"><i data-lucide="map-pin"></i></div>
+            <div class="info-content">
+              <h3>Our Location</h3>
+              <p>123 Fashion Avenue, Gulshan, Dhaka 1212, Bangladesh</p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon"><i data-lucide="phone"></i></div>
+            <div class="info-content">
+              <h3>Phone Number</h3>
+              <p>+880 1711 223344<br>Mon-Fri, 9am - 6pm</p>
+            </div>
+          </div>
+          
+          <div class="info-item">
+            <div class="info-icon"><i data-lucide="mail"></i></div>
+            <div class="info-content">
+              <h3>Email Address</h3>
+              <p>support@velora.com<br>info@velora.com</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div>
+          <h2 class="mb-4">Send Us a Message</h2>
+          <form id="contact-form" class="contact-form">
+            <div class="form-group">
+              <label class="form-label">Your Name *</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Email *</label>
+              <input type="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Subject</label>
+              <input type="text" class="form-control">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Your Message *</label>
+              <textarea class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 14px;">SEND MESSAGE</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 VELORA. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast-container" class="toast-container"></div>
+  <button id="scroll-top" class="scroll-top"><i data-lucide="arrow-up"></i></button>
+
+  <script src="main.js"></script>
+  <script src="cart.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {       if (typeof lucide !== 'undefined') {         lucide.createIcons();       }     });
+    
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      showToast('Message sent successfully! We will get back to you soon.');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>

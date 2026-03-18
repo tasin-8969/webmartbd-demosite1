@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Details | VELORA</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="product.css">
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">VELO<span>R</span>A</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="shop.html?category=Men">Men</a>
+        <a href="shop.html?category=Women">Women</a>
+        <a href="shop.html?category=Kids">Kids</a>
+        <a href="shop.html?sale=true">Sale</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-icons">
+        <button><i data-lucide="search"></i></button>
+        <button><i data-lucide="heart"></i></button>
+        <a href="login.html" class="auth-link"><i data-lucide="user"></i></a>
+        <button id="cart-btn">
+          <i data-lucide="shopping-bag"></i>
+          <span class="cart-badge">0</span>
+        </button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn"><i data-lucide="menu"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <div class="logo">VELO<span>R</span>A</div>
+      <button id="mobile-menu-close"><i data-lucide="x"></i></button>
+    </div>
+    <nav class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="shop.html?category=Men">Men</a>
+      <a href="shop.html?category=Women">Women</a>
+      <a href="shop.html?category=Kids">Kids</a>
+      <a href="shop.html?sale=true">Sale</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="cart-close" class="cart-close"><i data-lucide="x"></i></button>
+    </div>
+    <div id="cart-drawer-items" class="cart-items"></div>
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal</span>
+        <span id="cart-drawer-total">৳ 0</span>
+      </div>
+      <a href="cart.html" class="btn btn-primary btn-checkout">View Cart & Checkout</a>
+    </div>
+  </div>
+
+  <!-- Breadcrumb -->
+  <div class="container" style="padding-top: 20px;">
+    <div class="breadcrumb" style="justify-content: flex-start;">
+      <a href="index.html">Home</a> / <a href="shop.html">Shop</a> / <span id="breadcrumb-title">Product Name</span>
+    </div>
+  </div>
+
+  <!-- Product Details -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="product-single">
+        <!-- Gallery -->
+        <div class="product-gallery">
+          <div class="main-image">
+            <img id="main-product-img" src="" alt="Product Image">
+          </div>
+          <div class="thumbnail-list" id="thumbnail-list">
+            <!-- Thumbnails rendered via JS -->
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="product-details">
+          <div class="product-category" id="product-category">Category</div>
+          <h1 class="product-name" id="product-name">Product Name</h1>
+          
+          <div class="product-rating">
+            <i data-lucide="star" fill="currentColor"></i>
+            <i data-lucide="star" fill="currentColor"></i>
+            <i data-lucide="star" fill="currentColor"></i>
+            <i data-lucide="star" fill="currentColor"></i>
+            <i data-lucide="star-half" fill="currentColor"></i>
+            <span class="product-rating-text">(12 Reviews)</span>
+          </div>
+          
+          <div class="product-price-large" id="product-price">৳ 0</div>
+          
+          <p class="product-description">
+            Experience the perfect blend of comfort and style. This premium garment is crafted from high-quality materials, ensuring durability and a perfect fit for any occasion.
+          </p>
+          
+          <div class="selector-group">
+            <div class="selector-title">
+              <span>Size</span>
+              <a href="#" class="size-guide-link">Size Guide</a>
+            </div>
+            <div class="size-list" id="size-list">
+              <!-- Sizes rendered via JS -->
+            </div>
+          </div>
+          
+          <div class="selector-group">
+            <div class="selector-title">Color</div>
+            <div class="color-list" id="color-list">
+              <!-- Colors rendered via JS -->
+            </div>
+          </div>
+          
+          <div class="action-group">
+            <div class="qty-input">
+              <button onclick="updateProductQty(-1)">-</button>
+              <input type="text" id="product-qty" value="1" readonly>
+              <button onclick="updateProductQty(1)">+</button>
+            </div>
+            <button class="btn btn-primary btn-add" id="add-to-cart-btn">ADD TO CART</button>
+            <button class="btn btn-accent btn-buy" id="buy-now-btn">BUY NOW</button>
+            <button class="btn-wishlist" style="border: 1px solid #E2E8F0;"><i data-lucide="heart"></i></button>
+          </div>
+          
+          <div class="product-meta">
+            <div>SKU: <span id="product-sku">VLR-001</span></div>
+            <div>Availability: <span>In Stock</span></div>
+            <div>Tags: <span>Fashion, Premium, New</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="product-tabs">
+        <div class="tab-headers">
+          <button class="tab-btn active" onclick="switchTab('description')">Description</button>
+          <button class="tab-btn" onclick="switchTab('size-guide')">Size Guide</button>
+          <button class="tab-btn" onclick="switchTab('reviews')">Reviews (12)</button>
+        </div>
+        
+        <div id="tab-description" class="tab-content active">
+          <p>Elevate your wardrobe with this meticulously designed piece. Whether you're dressing up for a special event or keeping it casual, this item offers unparalleled versatility. The fabric is breathable, soft to the touch, and designed to maintain its shape and color wash after wash.</p>
+          <ul style="margin-top: 16px; list-style: disc; padding-left: 20px;">
+            <li>Premium quality fabric</li>
+            <li>Comfortable and breathable</li>
+            <li>Durable construction</li>
+            <li>Easy care instructions</li>
+          </ul>
+        </div>
+        
+        <div id="tab-size-guide" class="tab-content">
+          <p>Please refer to the size chart below to find your perfect fit. Measurements are in inches.</p>
+          <table style="width: 100%; margin-top: 16px; border-collapse: collapse;">
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+              <th style="padding: 12px; text-align: left;">Size</th>
+              <th style="padding: 12px; text-align: left;">Chest</th>
+              <th style="padding: 12px; text-align: left;">Waist</th>
+              <th style="padding: 12px; text-align: left;">Length</th>
+            </tr>
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+              <td style="padding: 12px;">S</td>
+              <td style="padding: 12px;">36-38</td>
+              <td style="padding: 12px;">28-30</td>
+              <td style="padding: 12px;">27</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+              <td style="padding: 12px;">M</td>
+              <td style="padding: 12px;">38-40</td>
+              <td style="padding: 12px;">32-34</td>
+              <td style="padding: 12px;">28</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+              <td style="padding: 12px;">L</td>
+              <td style="padding: 12px;">42-44</td>
+              <td style="padding: 12px;">36-38</td>
+              <td style="padding: 12px;">29</td>
+            </tr>
+            <tr style="border-bottom: 1px solid #E2E8F0;">
+              <td style="padding: 12px;">XL</td>
+              <td style="padding: 12px;">46-48</td>
+              <td style="padding: 12px;">40-42</td>
+              <td style="padding: 12px;">30</td>
+            </tr>
+          </table>
+        </div>
+        
+        <div id="tab-reviews" class="tab-content">
+          <p>Customer reviews will be displayed here.</p>
+        </div>
+      </div>
+
+      <!-- Related Products -->
+      <div style="margin-top: 80px;">
+        <h2 class="text-center mb-5">Related Products</h2>
+        <div id="related-grid" class="product-grid">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 VELORA. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast-container" class="toast-container"></div>
+  <button id="scroll-top" class="scroll-top"><i data-lucide="arrow-up"></i></button>
+
+  <script src="main.js"></script>
+  <script src="cart.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {       if (typeof lucide !== 'undefined') {         lucide.createIcons();       }     });
+    
+    let currentProduct = null;
+    let selectedSize = null;
+    let selectedColor = null;
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const productId = parseInt(urlParams.get('id')) || 1;
+      
+      currentProduct = products.find(p => p.id === productId);
+      
+      if (!currentProduct) {
+        window.location.href = 'shop.html';
+        return;
+      }
+      
+      // Populate data
+      document.getElementById('breadcrumb-title').textContent = currentProduct.name;
+      document.getElementById('product-name').textContent = currentProduct.name;
+      document.getElementById('product-category').textContent = currentProduct.category;
+      document.getElementById('product-sku').textContent = `VLR-${currentProduct.id.toString().padStart(3, '0')}`;
+      
+      const priceDisplay = currentProduct.salePrice 
+        ? `<del>${CURRENCY} ${currentProduct.price}</del> ${CURRENCY} ${currentProduct.salePrice}`
+        : `${CURRENCY} ${currentProduct.price}`;
+      document.getElementById('product-price').innerHTML = priceDisplay;
+      
+      // Images
+      document.getElementById('main-product-img').src = currentProduct.image;
+      
+      // Sizes
+      const sizeList = document.getElementById('size-list');
+      sizeList.innerHTML = currentProduct.sizes.map((size, index) => 
+        `<button class="size-btn ${index === 0 ? 'active' : ''}" onclick="selectSize(this, '${size}')">${size}</button>`
+      ).join('');
+      selectedSize = currentProduct.sizes[0];
+      
+      // Colors
+      const colorList = document.getElementById('color-list');
+      colorList.innerHTML = currentProduct.colors.map((color, index) => 
+        `<button class="color-btn ${index === 0 ? 'active' : ''}" style="background-color: ${color};" onclick="selectColor(this, '${color}')"></button>`
+      ).join('');
+      selectedColor = currentProduct.colors[0];
+      
+      // Related
+      const relatedGrid = document.getElementById('related-grid');
+      const related = products.filter(p => p.category === currentProduct.category && p.id !== currentProduct.id).slice(0, 3);
+      if (related.length < 3) {
+        related.push(...products.filter(p => p.id !== currentProduct.id && !related.includes(p)).slice(0, 3 - related.length));
+      }
+      renderProducts(related, relatedGrid);
+      
+      // Actions
+      document.getElementById('add-to-cart-btn').addEventListener('click', () => {
+        const qty = parseInt(document.getElementById('product-qty').value);
+        
+        const existingItem = cart.find(item => item.id === currentProduct.id && item.size === selectedSize && item.color === selectedColor);
+        if (existingItem) {
+          existingItem.quantity += qty;
+        } else {
+          cart.push({
+            id: currentProduct.id,
+            name: currentProduct.name,
+            price: currentProduct.salePrice || currentProduct.price,
+            image: currentProduct.image,
+            quantity: qty,
+            size: selectedSize,
+            color: selectedColor
+          });
+        }
+        
+        saveCart();
+        updateCartCount();
+        renderCartDrawer();
+        showToast(`${currentProduct.name} added to cart`);
+        
+        const cartDrawer = document.getElementById('cart-drawer');
+        const cartOverlay = document.getElementById('cart-overlay');
+        cartDrawer.classList.add('active');
+        cartOverlay.classList.add('active');
+      });
+      
+      document.getElementById('buy-now-btn').addEventListener('click', () => {
+        document.getElementById('add-to-cart-btn').click();
+        setTimeout(() => {
+          window.location.href = 'checkout.html';
+        }, 500);
+      });
+    });
+    
+    function selectSize(btn, size) {
+      document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedSize = size;
+    }
+    
+    function selectColor(btn, color) {
+      document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedColor = color;
+    }
+    
+    function updateProductQty(change) {
+      const input = document.getElementById('product-qty');
+      let val = parseInt(input.value) + change;
+      if (val < 1) val = 1;
+      input.value = val;
+    }
+    
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+      
+      event.target.classList.add('active');
+      document.getElementById(`tab-${tabId}`).classList.add('active');
+    }
+  </script>
+</body>
+</html>

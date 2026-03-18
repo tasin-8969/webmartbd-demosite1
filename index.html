@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VELORA | Timeless Fashion</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/lucide@latest" defer></script>
+</head>
+<body>
+  <!-- Page Loader -->
+  <div id="page-loader" class="page-loader">
+    <div class="loader-logo">VELO<span>R</span>A</div>
+    <div class="loader-bar">
+      <div class="loader-progress"></div>
+    </div>
+  </div>
+
+  <!-- Announcement Bar -->
+  <div class="announcement-bar">
+    Free delivery on orders above ৳ 1,000
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">VELO<span>R</span>A</a>
+      
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="shop.html?category=Men">Men</a>
+        <a href="shop.html?category=Women">Women</a>
+        <a href="shop.html?category=Kids">Kids</a>
+        <a href="shop.html?sale=true" class="text-accent">Sale</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="header-icons">
+        <button><i data-lucide="search"></i></button>
+        <button><i data-lucide="heart"></i></button>
+        <a href="login.html" class="auth-link"><i data-lucide="user"></i></a>
+        <button id="cart-btn">
+          <i data-lucide="shopping-bag"></i>
+          <span class="cart-badge">0</span>
+        </button>
+        <button class="mobile-menu-btn" id="mobile-menu-btn"><i data-lucide="menu"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="mobile-menu">
+    <div class="mobile-menu-header">
+      <div class="logo">VELO<span>R</span>A</div>
+      <button id="mobile-menu-close"><i data-lucide="x"></i></button>
+    </div>
+    <nav class="mobile-nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="shop.html?category=Men">Men</a>
+      <a href="shop.html?category=Women">Women</a>
+      <a href="shop.html?category=Kids">Kids</a>
+      <a href="shop.html?sale=true" class="text-accent">Sale</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div id="cart-overlay" class="cart-overlay"></div>
+  <div id="cart-drawer" class="cart-drawer">
+    <div class="cart-header">
+      <h3>Your Cart</h3>
+      <button id="cart-close" class="cart-close"><i data-lucide="x"></i></button>
+    </div>
+    <div id="cart-drawer-items" class="cart-items">
+      <!-- Cart items rendered here -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-summary-row">
+        <span>Subtotal</span>
+        <span id="cart-drawer-total">৳ 0</span>
+      </div>
+      <a href="cart.html" class="btn btn-primary btn-checkout">View Cart & Checkout</a>
+    </div>
+  </div>
+
+  <!-- SECTION: Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">Timeless Fashion for the Modern Wardrobe</h1>
+        <p class="hero-text">Discover timeless fashion for Men, Women, and Kids — crafted for comfort, designed for confidence.</p>
+        <a href="shop.html" class="btn btn-outline">EXPLORE THE COLLECTION</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: New Arrivals -->
+  <section class="section-padding">
+    <div class="container">
+      <div class="text-center mb-5 ">
+        <h2 class="mb-2">New Arrivals</h2>
+        <p class="text-muted mb-4">Discover the latest trends and fresh styles.</p>
+        <a href="shop.html" class="btn btn-outline-dark">SEE WHAT'S NEW</a>
+      </div>
+      <div id="new-arrivals-grid" class="product-grid">
+        <!-- Products rendered via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: Our Categories -->
+  <section class="section-padding bg-soft">
+    <div class="container">
+      <h2 class="text-center mb-5 ">Shop by Category</h2>
+      <div class="category-grid fade-in-section">
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1516826957135-700ede19c6ce?w=800" alt="Mens Wear">
+          <div class="category-content">
+            <h3 class="category-title">Mens Wear</h3>
+            <a href="shop.html?category=Men" class="category-link">Shop Now</a>
+          </div>
+        </div>
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800" alt="Womens Wear">
+          <div class="category-content">
+            <h3 class="category-title">Womens Wear</h3>
+            <a href="shop.html?category=Women" class="category-link">Shop Now</a>
+          </div>
+        </div>
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1519238263530-99abad67b86e?w=800" alt="Kids Wear">
+          <div class="category-content">
+            <h3 class="category-title">Kids Wear</h3>
+            <a href="shop.html?category=Kids" class="category-link">Shop Now</a>
+          </div>
+        </div>
+        <div class="category-card">
+          <img src="https://images.unsplash.com/photo-1509319117193-57bab727e09d?w=800" alt="Accessories">
+          <div class="category-content">
+            <h3 class="category-title">Accessories</h3>
+            <a href="shop.html?category=Accessories" class="category-link">Shop Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: Bestsellers -->
+  <section class="section-padding">
+    <div class="container">
+      <h2 class="text-center mb-5 fade-in-section">Bestsellers</h2>
+      <div id="bestsellers-grid" class="product-grid">
+        <!-- Products rendered via JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: How It Works -->
+  <section class="section-padding how-it-works">
+    <div class="container fade-in-section">
+      <div class="text-center">
+        <h2 class="mb-2">How It Works</h2>
+        <p class="text-muted">Just Pick, Pack and Ship</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-icon"><i data-lucide="shopping-bag"></i></div>
+          <h3>1. Shop Styles</h3>
+          <p class="text-muted mt-2">Browse our extensive collection of premium clothing.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon"><i data-lucide="clock"></i></div>
+          <h3>2. Pick Your Fit</h3>
+          <p class="text-muted mt-2">Select your perfect size and favorite colors.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon"><i data-lucide="clipboard-check"></i></div>
+          <h3>3. Checkout Fast</h3>
+          <p class="text-muted mt-2">Secure payment and fast delivery to your door.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION: Newsletter -->
+  <section class="section-padding">
+    <div class="container fade-in-section">
+      <div class="newsletter-section">
+        <h2>Get 10% Off on Your First Order</h2>
+        <p class="text-muted mt-2">Subscribe to our newsletter and be the first to know about new arrivals and special offers.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Subscribed successfully!');">
+          <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+          <button type="submit" class="btn btn-accent">SUBSCRIBE</button>
+        </form>
+      </div>
+      
+      <div class="text-center mt-5">
+        <h3 class="mb-3">Follow us @VeloraStyle</h3>
+        <div class="insta-grid">
+          <div class="insta-item"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400" alt="Insta 1"></div>
+          <div class="insta-item"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400" alt="Insta 2"></div>
+          <div class="insta-item"><img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400" alt="Insta 3"></div>
+          <div class="insta-item"><img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=400" alt="Insta 4"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">VELO<span>R</span>A</div>
+          <p class="footer-text">Timeless fashion for the modern wardrobe. Crafted for comfort, designed for confidence.</p>
+          <div class="social-links">
+            <a href="#"><i data-lucide="facebook"></i></a>
+            <a href="#"><i data-lucide="instagram"></i></a>
+            <a href="#"><i data-lucide="twitter"></i></a>
+            <a href="#"><i data-lucide="youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="footer-title">Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Categories</h4>
+          <ul class="footer-links">
+            <li><a href="shop.html?category=Men">Mens Wear</a></li>
+            <li><a href="shop.html?category=Women">Womens Wear</a></li>
+            <li><a href="shop.html?category=Kids">Kids Wear</a></li>
+            <li><a href="shop.html?category=Accessories">Accessories</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="footer-title">Help</h4>
+          <ul class="footer-links">
+            <li><a href="#">Shipping & Returns</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="download.html">Download Source Code</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="feature-strip">
+      <div class="container">
+        <div class="feature-item"><i data-lucide="truck"></i> Free Delivery above ৳1000</div>
+        <div class="feature-item"><i data-lucide="zap"></i> Quick Delivery</div>
+        <div class="feature-item"><i data-lucide="shield-check"></i> Secure Payments</div>
+        <div class="feature-item"><i data-lucide="headphones"></i> 24/7 Customer Service</div>
+      </div>
+    </div>
+    
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 VELORA. All rights reserved.</p>
+        <div class="payment-icons">
+          <div class="bkash-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="white"/>
+              <path d="M2 17L12 22L22 17" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M2 12L12 17L22 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            bKash
+          </div>
+          <i data-lucide="credit-card"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast-container" class="toast-container"></div>
+  <button id="scroll-top" class="scroll-top"><i data-lucide="arrow-up"></i></button>
+
+  <script src="main.js"></script>
+  <script src="cart.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {       if (typeof lucide !== 'undefined') {         lucide.createIcons();       }     });
+  </script>
+</body>
+</html>
